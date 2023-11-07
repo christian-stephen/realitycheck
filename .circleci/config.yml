@@ -107,6 +107,14 @@ jobs:
       - run:
           command: grep "bar" output.txt | grep "beta"
 
+  runner:
+    docker:
+      - image: 'cimg/base:current'
+    resource_class: christian-stephen/runner-testing
+    steps:
+      - checkout
+      - run: "Hello, world! I'm on container runner"
+
   # job definition for verifying the resource_class per each executor_type
   executor_resource_class:
     parameters:
@@ -387,3 +395,4 @@ workflows:
   other_jobs:
     jobs:   
       - env-subst-example
+      - runner

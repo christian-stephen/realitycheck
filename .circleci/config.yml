@@ -113,7 +113,7 @@ jobs:
     resource_class: christian-stephen/runner-testing
     steps:
       - checkout
-      - run: "Hello, world! I'm on container runner"
+      - run: echo "Hello, world! I'm on container runner"
 
   # job definition for verifying the resource_class per each executor_type
   executor_resource_class:

@@ -107,6 +107,13 @@ jobs:
       - run:
           command: grep "bar" output.txt | grep "beta"
 
+  runner:
+    machine: true
+    resource_class: christian-stephen/runner-testing
+    steps:
+      - checkout
+      - run: echo "Hello, world! I'm on Machine Runner 3.0"
+
   # job definition for verifying the resource_class per each executor_type
   executor_resource_class:
     parameters:
@@ -387,3 +394,4 @@ workflows:
   other_jobs:
     jobs:   
       - env-subst-example
+      - runner

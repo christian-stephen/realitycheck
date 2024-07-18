@@ -344,6 +344,7 @@ workflows:
             parameters:
               resource_class: [small, medium, medium+, large, xlarge]
               executor_type: [docker] # default, but re-defining for clarity
+      - hello-world
 
   windows_resource_class_jobs:
     jobs:

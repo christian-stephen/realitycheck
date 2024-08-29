@@ -225,6 +225,7 @@ jobs:
       - run: which docker
       - run: docker -v
       - setup_remote_docker
+      - checkout
       - run:
           <<: *basic_docker_build
       - run: docker version

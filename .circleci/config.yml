@@ -177,6 +177,7 @@ jobs:
   machine:
     machine: true
     steps:
+      - checkout
       - run:
           <<: *basic_docker_build
       - run: |

@@ -330,6 +330,23 @@ jobs:
       - store_test_results:
           path: test-results
 
+  check_deploy_key_algo:
+    executor: docker
+    steps:
+      - run:
+          name: Check deploy key algorithm (before checkout)
+          command: |
+            for key in ~/.ssh/id_*.pub; do
+              [ -f "$key" ] || continue
+              awk '{print FILENAME": "$1}' "$key"
+            done
+      - checkout
+      - run:
+          name: Check deploy key algorithm (after checkout)
+          command: |
+            ls ~/.ssh/
+            awk '{print FILENAME": "$1}' ~/.ssh/*.pub
+
 workflows:
   docker_resource_class_jobs:
     jobs:
@@ -385,5 +402,6 @@ workflows:
       - artifacts_test_results
 
   other_jobs:
-    jobs:   
+    jobs:
       - env-subst-example
+      - check_deploy_key_algo

@@ -346,18 +346,13 @@ jobs:
 workflows:
   linux_ami_jobs:
     jobs:
-      - check_if_environment_is_aws
       - linux_ami_smoke:
           matrix:
             parameters:
               image: [ubuntu-2204, ubuntu-2404, ubuntu-2604]
               resource_class: [medium]
-          requires:
-            - check_if_environment_is_aws
       - linux_ami_smoke:
           matrix:
             parameters:
               image: [arm-default, ubuntu-2404, ubuntu-2604]
               resource_class: [arm.medium]
-          requires:
-            - check_if_environment_is_aws
